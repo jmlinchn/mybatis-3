@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.james.dao.IUserDao">
+  <!--查找全部-->
+  <select id="selectAll" resultType="cn.james.pojo.User">
+    select *
+    from user
+  </select>
+  <!--查找单个-->
+  <select id="selectByCondition" parameterType="cn.james.pojo.User" resultType="cn.james.pojo.User">
+    select *
+    from user
+    where id = #{id}
+      and username = #{username}
+  </select>
+  <!--增加-->
+  <insert id="insert" parameterType="cn.james.pojo.User">
+    insert into user(id, username, password, birthday)
+    values (#{id}, #{username}, #{password}, #{birthday})
+  </insert>
+  <!--修改-->
+  <update id="updateById" parameterType="cn.james.pojo.User">
+    update user
+    set username = #{username}
+    where id = #{id}
+  </update>
+  <!--删除-->
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete
+    from user
+    where id = #{id}
+  </delete>
+</mapper>
